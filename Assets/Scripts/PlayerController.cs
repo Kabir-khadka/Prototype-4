@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private GameObject focalPoint; 
     private Rigidbody playerRb;
 
-    private bool hasPowerUp = false;//
+    private bool hasPowerUp = false;//creating a bool variable to check the collision condition.
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
