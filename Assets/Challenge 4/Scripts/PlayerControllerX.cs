@@ -10,6 +10,7 @@ public class PlayerControllerX : MonoBehaviour
 
     public bool hasPowerup;
     public GameObject powerupIndicator;
+    public ParticleSystem boostParticle;//Reference to the particle system
     public int powerUpDuration = 5;
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
@@ -19,6 +20,7 @@ public class PlayerControllerX : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+        boostParticle.Stop();//make sure the particle system starts inactive.
     }
 
     void Update()
@@ -30,6 +32,21 @@ public class PlayerControllerX : MonoBehaviour
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRb.AddForce(focalPoint.transform.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
+
+            boostParticle.Play();
+
+            Invoke("StopBoostParticle", 1f); //Stop the particle system after 1 second
+
+        }
+
+    }
+
+    void StopBoostParticle()
+    {
+        boostParticle.Stop();
     }
 
     // If Player collides with powerup, activate powerup
@@ -40,6 +57,7 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
+            StartCoroutine(PowerupCooldown());
         }
     }
 

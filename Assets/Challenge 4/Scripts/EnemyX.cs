@@ -13,6 +13,8 @@ public class EnemyX : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody>();
         playerGoal = GameObject.Find("Player Goal");
+
+        SetSpeed(speed);
     }
 
     // Update is called once per frame
@@ -22,6 +24,11 @@ public class EnemyX : MonoBehaviour
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
 
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 
     private void OnCollisionEnter(Collision other)

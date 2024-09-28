@@ -13,9 +13,22 @@ public class SpawnManagerX : MonoBehaviour
 
     public int enemyCount;
     public int waveCount = 1;
+    public float enemySpeed = 100f;
+    public float speedIncreasePerWave = 50f;
 
 
-    public GameObject player; 
+    public GameObject player;
+
+
+    void Start()
+    {
+        // Initialize starting values
+        waveCount = 1; // Ensure waveCount starts at 1
+        enemySpeed = 100f; // Initialize enemy speed
+
+        // Spawn the first wave when the game starts
+        SpawnEnemyWave(waveCount);
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,6 +38,8 @@ public class SpawnManagerX : MonoBehaviour
 
         if (enemyCount == 0)
         {
+            waveCount++;
+            enemySpeed += speedIncreasePerWave;//Increase speed with each wave
             SpawnEnemyWave(waveCount);
         }
 
@@ -52,10 +67,12 @@ public class SpawnManagerX : MonoBehaviour
         // Spawn number of enemy balls based on wave number
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            GameObject Enemy = Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            Enemy.GetComponent<EnemyX>().SetSpeed(enemySpeed);// setting the speed for this wave and storing it in the enemySpeed variable.
         }
 
-        waveCount++;
+
+       
         ResetPlayerPosition(); // put player back at start
 
     }
