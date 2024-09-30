@@ -869,14 +869,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 2677608823620024968, guid: 47d08facc04ce8543b78e77c8c4106a0, type: 3}
-  - {fileID: 2677608823620024968, guid: f54f0c181cb744c4f9bfce132389a0bf, type: 3}
+  - {fileID: 5605760478981661816, guid: f35557afcf8733747b26b242602819ab, type: 3}
+  - {fileID: 3551218495833102503, guid: 6e65c1eb24b992840999c0b2c6badc92, type: 3}
   powerupPrefabs:
   - {fileID: 5937224639418247897, guid: f0b3c413b6466284f9dae36f0d687189, type: 3}
   - {fileID: 5937224639418247897, guid: f0b3c413b6466284f9dae36f0d687189, type: 3}
   - {fileID: 5937224639418247897, guid: f0b3c413b6466284f9dae36f0d687189, type: 3}
   enemiesCount: 0
   waveNumber: 1
+  bossPrefab: {fileID: 4308778051025706439, guid: c6a7a5a0cfca5b84eb8cee892e3cd66f, type: 3}
+  miniEnemyPrefabs:
+  - {fileID: 6851415289778583945, guid: ff2064e49d798be4b9007fadae774bf6, type: 3}
+  - {fileID: 6987816168635950611, guid: f6c97db9b0eabb54d83962f479717947, type: 3}
+  bossRound: 2
 --- !u!4 &1959613466
 Transform:
   m_ObjectHideFlags: 0
